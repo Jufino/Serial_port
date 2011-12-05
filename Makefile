@@ -13,8 +13,8 @@ install: libserial.o
 example:example_write example_read
 
 example_write:example_write.cpp
-	$(CC) example_write.c -llibserial -o example_write
+	$(CC) example_write.cpp -llibserial -o example_write
 
 example_read:example_read.cpp 
-	$(CC) example_read.c -llibserial -o example_read
+	$(CC) example_read.cpp -llibserial -o example_read
 
