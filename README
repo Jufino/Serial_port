@@ -6,18 +6,18 @@ Small library for reading from Serial port and writing to Serial port.
 Make
 ----------------
 //install libserial
-make install
+'$make install'
 
 //make example_read & example_write
-make example
+'$make example'
 
 Example of usage
 ----------------
 
 For example reading of usage see `example_read.cpp` file and for writting see `example_write.cpp`
 
-./example_read
-./example_write
+'$./example_read'
+'$./example_write'
 
 
 (c) 2011 Jufino
