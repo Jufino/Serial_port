@@ -4,17 +4,12 @@
 #include <string.h>
 
 using namespace std;
-#include "libserial.h";
+#include <serial.h>
 
-int main(void)
+int main()
 {
-	char receive_data[40];
-	memset(&receive_data, 0, sizeof(receive_data));		//clear array
-
-	int port_int = open_serial("/dev/ttyUSB0",B115200);	//open port
-	
-	read_serial(port_int,receive_data,40);		//receive data
-	printf(receive_dat);				//printf receive data
-	
-	close_serial(port_int);				//close port
+	int portHandle = SerialOpen("/dev/ttyUSB0",B115200);	//Open port, device="/dev/ttyUSB0", baundrate=115200
+	char *data = SerialRead(portHandle,40);			//receive max 40 chars
+	printf("%s",data);					//printf data
+	SerialClose(portHandle);				//close port
 }

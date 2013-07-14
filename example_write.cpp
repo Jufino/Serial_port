@@ -4,13 +4,11 @@
 #include <string.h>
 
 using namespace std;
-#include "libserial.h";
+#include <serial.h>
 
 int main(void)
 {
-	int port_int = open_serial("/dev/ttyUSB0",B115200);	//open port
-	
-	write_serial(port_int,"test");		//write "test" to serial port
-
-	close_serial(port_int);		//close port
+	int portHandle = SerialOpen("/dev/ttyUSB0",B115200);	//Open port, device="/dev/ttyUSB0", baundrate=115200
+	SerialWrite(portHandle,"test");				//write "test" to serial port
+	SerialClose(portHandle);				//close port
 }

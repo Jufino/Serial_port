@@ -1,20 +1,25 @@
+CC=$(CROSS_COMPILE)g++ -Wall -g
+TARGET=serial
 
-CC=$(CROSS_COMPILE)gcc -g
-TARGET=libserial
+serial:serial.c
+	$(CC) -c serial.c
 
-libserial.o:libserial.c
-	$(CC) -c libserial.c
-
-install: libserial.o
-	$(CROSS_COMPILE)ar rcs lib$(TARGET).a libserial.o
+install: $(TARGET)
+	$(CROSS_COMPILE)ar rcs lib$(TARGET).a serial.o
 	install lib$(TARGET).a /usr/lib/lib$(TARGET).a
 	install *.h /usr/include/
+	rm libserial.a
+	rm serial.o
+
+clean:
+	rm /usr/lib/lib$(TARGET).a
+	rm /usr/include/$(TARGET).h
 
 example:example_write example_read
 
 example_write:example_write.cpp
-	$(CC) example_write.cpp -llibserial -o example_write
+	$(CC) example_write.cpp -lserial -o example_write
 
 example_read:example_read.cpp 
-	$(CC) example_read.cpp -llibserial -o example_read
+	$(CC) example_read.cpp -lserial -o example_read
 
